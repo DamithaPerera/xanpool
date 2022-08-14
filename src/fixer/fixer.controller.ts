@@ -1,4 +1,10 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import {
+  CacheInterceptor,
+  Controller,
+  Get,
+  Query,
+  UseInterceptors,
+} from '@nestjs/common';
 import { FixerService } from './fixer.service';
 import { ApiOperation, ApiQuery } from '@nestjs/swagger';
 import { currencyTypes, symbolTypes } from '../common/enum/enum';
@@ -9,6 +15,7 @@ import {
 } from '../common/constants/messages';
 
 @Controller('/v1/fixer')
+@UseInterceptors(CacheInterceptor)
 export class FixerController {
   constructor(private readonly fixerService: FixerService) {}
 
