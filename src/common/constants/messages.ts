@@ -13,4 +13,19 @@ const ERROR_MESSAGE = {
   },
 };
 
-export { SUCCESS_MESSAGES, ERROR_MESSAGE };
+const DESCRIPTION_MESSAGE = {
+  BASE: {
+    message:
+      'Enter the three-letter currency code of your preferred base currency',
+  },
+  SYMBOLS: {
+    message:
+      'Enter a list of comma-separated currency codes to limit output currencies',
+  },
+  SUMMARY: {
+    message:
+      'Returns real-time exchange rate data updated every 60 minutes, every 10 minutes or every 60 seconds',
+  },
+};
+
+export { SUCCESS_MESSAGES, ERROR_MESSAGE, DESCRIPTION_MESSAGE };
