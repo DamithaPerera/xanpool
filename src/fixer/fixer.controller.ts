@@ -1,14 +1,40 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { FixerService } from './fixer.service';
-import { CreateFixerDto } from './dto/create-fixer.dto';
-import { UpdateFixerDto } from './dto/update-fixer.dto';
+import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
+import { currencyTypes, symbolTypes } from '../common/enum/enum';
 
-@Controller('fixer')
+@Controller('/v1/fixer')
 export class FixerController {
   constructor(private readonly fixerService: FixerService) {}
 
   @Get()
-  async findAll() {
-    return this.fixerService.findAll();
+  @ApiQuery({
+    name: 'base',
+    enum: currencyTypes,
+    description:
+      'Enter the three-letter currency code of your preferred base currency',
+    type: String,
+  })
+  @ApiQuery({
+    name: 'symbols',
+    enum: symbolTypes,
+    isArray: true,
+    description:
+      'Enter a list of comma-separated currency codes to limit output currencies',
+    type: String,
+  })
+  @ApiOperation({
+    summary:
+      'Returns real-time exchange rate data updated every 60 minutes, every 10 minutes or every 60 seconds.',
+  })
+  @ApiResponse({
+    status: 200,
+    description: ' Fetch currency values',
+  })
+  async getFixer(
+    @Query('base') base: string,
+    @Query('symbols') symbols: string,
+  ) {
+    return this.fixerService.findAll(base, symbols);
   }
 }

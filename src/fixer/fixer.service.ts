@@ -7,7 +7,7 @@ import { HttpService } from '@nestjs/axios';
 export class FixerService {
   constructor(private readonly httpService: HttpService) {}
 
-  async findAll() {
+  async findAll(base, symbols) {
     try {
       const response = await this.httpService.axiosRef.get(
         'https://api.apilayer.com/fixer/convert?to=GBP&from=EUR&amount=100.00&date=2018-01-01',
