@@ -1,11 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { FixerService } from './fixer.service';
-import {
-  ApiOkResponse,
-  ApiOperation,
-  ApiQuery,
-  getSchemaPath,
-} from '@nestjs/swagger';
+import { ApiOperation, ApiQuery } from '@nestjs/swagger';
 import { currencyTypes, symbolTypes } from '../common/enum/enum';
 import { SuccessDto } from '../common/helpers/responses/response-dto';
 import {
