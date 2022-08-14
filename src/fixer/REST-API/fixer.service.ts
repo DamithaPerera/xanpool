@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
-import { ErrorDto } from '../common/helpers/responses/response-dto';
-import { ERROR_MESSAGE } from '../common/constants/messages';
+import { ErrorDto } from '../../common/helpers/responses/response-dto';
+import { ERROR_MESSAGE } from '../../common/constants/messages';
 
 @Injectable()
 export class FixerService {

@@ -7,12 +7,12 @@ import {
 } from '@nestjs/common';
 import { FixerService } from './fixer.service';
 import { ApiOperation, ApiQuery } from '@nestjs/swagger';
-import { currencyTypes, symbolTypes } from '../common/enum/enum';
-import { SuccessDto } from '../common/helpers/responses/response-dto';
+import { currencyTypes, symbolTypes } from '../../common/enum/enum';
+import { SuccessDto } from '../../common/helpers/responses/response-dto';
 import {
   DESCRIPTION_MESSAGE,
   SUCCESS_MESSAGES,
-} from '../common/constants/messages';
+} from '../../common/constants/messages';
 
 @Controller('/v1/fixer')
 @UseInterceptors(CacheInterceptor)
