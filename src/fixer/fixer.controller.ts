@@ -2,6 +2,8 @@ import { Controller, Get, Query } from '@nestjs/common';
 import { FixerService } from './fixer.service';
 import { ApiOperation, ApiQuery, ApiResponse } from '@nestjs/swagger';
 import { currencyTypes, symbolTypes } from '../common/enum/enum';
+import { SuccessDto } from '../common/helpers/responses/response-dto';
+import { SUCCESS_MESSAGES } from '../common/constants/messages';
 
 @Controller('/v1/fixer')
 export class FixerController {
@@ -35,6 +37,7 @@ export class FixerController {
     @Query('base') base: string,
     @Query('symbols') symbols: string,
   ) {
-    return this.fixerService.findAll(base, symbols);
+    const data = await this.fixerService.getExchangeRate(base, symbols);
+    return new SuccessDto(SUCCESS_MESSAGES.EXCHANGE_RATES, data);
   }
 }
