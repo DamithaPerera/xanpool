@@ -29,6 +29,7 @@ export class FixerController {
   @ApiQuery({
     name: 'symbols',
     enum: symbolTypes,
+    isArray: true,
     description: DESCRIPTION_MESSAGE.SYMBOLS.message,
     type: String,
   })

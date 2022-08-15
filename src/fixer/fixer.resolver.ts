@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { FixerService } from './fixer.service';
 import { Fixer } from './entities/fixer.entity';
 
@@ -6,9 +6,11 @@ import { Fixer } from './entities/fixer.entity';
 export class FixerResolver {
   constructor(private fixerService: FixerService) {}
 
-  @Query(() => [Fixer], { name: 'getAllProjects' })
-  findAll() {
-    console.log('dd');
-    return this.fixerService.getExchangeRate('USD', 'USD');
+  @Query(() => Fixer, { name: 'getFixer' })
+  async findAll(
+    @Args('base', { nullable: false }) base: string,
+    @Args('symbols', { nullable: false }) symbols?: string,
+  ) {
+    return this.fixerService.getExchangeRate(base, symbols);
   }
 }

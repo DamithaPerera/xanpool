@@ -1,11 +1,14 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { GraphQLJSONObject } from 'graphql-type-json'
 
 @ObjectType()
 export class Fixer {
   @Field()
-  id: string;
+  base: string;
+
   @Field()
-  firstName: string;
-  @Field()
-  lastName: string;
+  date: string;
+
+  @Field(() => GraphQLJSONObject)
+  rates: object;
 }

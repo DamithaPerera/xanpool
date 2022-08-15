@@ -8,6 +8,7 @@ import { HttpService } from '@nestjs/axios';
 import { ErrorDto } from '../common/helpers/responses/response-dto';
 import { ERROR_MESSAGE } from '../common/constants/messages';
 import { Cache } from 'cache-manager';
+import { Fixer } from './entities/fixer.entity';
 
 @Injectable()
 export class FixerService {
@@ -53,16 +54,6 @@ export class FixerService {
       );
       delete response.data.success;
       delete response.data.timestamp;
-      // const response = {
-      //   data: {
-      //     base: 'USD',
-      //     date: '2022-08-15',
-      //     rates: {
-      //       HKD: 7.83595,
-      //       USD: 7.83595,
-      //     },
-      //   },
-      // };
       await this.cacheManager.set('name', response.data, { ttl: 3600 });
       return response.data;
     } catch (error) {
