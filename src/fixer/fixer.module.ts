@@ -14,8 +14,8 @@ import { join } from 'path';
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/fixer/graphql-schema.gql'),
-      debug: false,
-      playground: true,
+      // debug: false,
+      // playground: true,
     }),
   ],
   controllers: [FixerController],
