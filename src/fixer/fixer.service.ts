@@ -48,7 +48,7 @@ export class FixerService {
         `https://api.apilayer.com/fixer/latest?symbols=${symbols}&base=${base}`,
         {
           headers: {
-            apikey: 'lFlDaqvaHw6ZWOlKoHDk7smdhuwpdZqI',
+            apikey: '0P7hRnK6SOsI7NeddmnKz73bnu1J6nZO',
           },
         },
       );
