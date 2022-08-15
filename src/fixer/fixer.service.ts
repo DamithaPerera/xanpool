@@ -8,7 +8,6 @@ import { HttpService } from '@nestjs/axios';
 import { ErrorDto } from '../common/helpers/responses/response-dto';
 import { ERROR_MESSAGE } from '../common/constants/messages';
 import { Cache } from 'cache-manager';
-import { Fixer } from './entities/fixer.entity';
 
 @Injectable()
 export class FixerService {
